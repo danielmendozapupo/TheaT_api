@@ -1,0 +1,34 @@
+<header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between fixed-top">
+            <a class="navbar-brand" href="{{url_for('index')}}">
+             <img class="img-fluid img-thumbnail"  src= "{{ url_for('static',filename='images/mylogo_1.png')}}" alt="my logo"/>
+                <!--"{{ url_for('static',filename='images/mylogo_1.png')}}"-->
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav nav-tabs nav-justified nav-fill ml-auto w-100 "  id="myTabJust" role="tablist">
+             <!--<ul class="nav nav-tabs nav-justified mb-3" id="tab" role="tablist">-->
+                <!--for the dashboard-->
+                      <li class="nav-item">
+                            <a class="nav-link active" id="home-tab-just" data-toggle="tab" href="#home-just" role="tab" aria-controls="home-just"
+                              aria-selected="false" {% if home %}active{% endif %}>Home</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" id="profile-tab-just" data-toggle="tab" href="#profile-just" role="tab" aria-controls="profile-just"
+                              aria-selected="false" {% if profile%}active{% endif %}>Profile</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" id="contact-tab-just" data-toggle="tab" href="#contact-just" role="tab" aria-controls="contact-just"
+                              aria-selected="false" {% if contact %}active{% endif %}>Contact</a>
+                          </li>
+                            {% if session['username'] %}
+                                <span class="user">Welcome, {{ session['username'] }}</span>
+                            {% endif %}
+                  <!--end Dashboard -->
+                </ul>
+            </div>
+        </nav>
+</header>

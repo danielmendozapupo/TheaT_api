@@ -1,0 +1,235 @@
+{% extends "layout.html" %}
+
+   {% block content %}
+         <!--Page Content-->
+     <hr class="mt-2 mb-5">
+        <div class="row">
+            <div class="container">
+                <h1 class="text-center ">Now Playing</h1>
+            </div>
+        </div>
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+           aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+
+                <div class="modal-body">
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <!-- 16:9 aspect ratio -->
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always"
+                        allow="autoplay"></iframe>
+
+                   {% block javascript %}
+                        <script>
+                                $(document).ready(function() {
+
+                                // Gets the video src from the data-src on each button
+
+                                var $videoSrc;
+                                $('.video-btn').click(function() {
+                                    $videoSrc = $(this).data( "src" );
+                                });
+                                console.log($videoSrc);
+
+
+
+                                // when the modal is opened autoplay it
+                                $('#myModal').on('shown.bs.modal', function (e) {
+
+                                // set the video src to autoplay and not to show related video. Youtube related video is like a
+                                //box of chocolates... you never know what you're gonna get
+                                $("#video").attr('src',$videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0" );
+                                })
+
+
+
+                                // stop playing the youtube video when I close the modal
+                                $('#myModal').on('hide.bs.modal', function (e) {
+                                    // a poor man's stop video
+                                    $("#video").attr('src',$videoSrc);
+                                })
+
+
+                                // document ready
+                                });
+
+                        </script>
+                   {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+        <div class="container mt-3">
+
+            <div class="media border p-3">
+                <div class="media-left media-top">
+                    <a href="#">
+                        <img class="align-self-start mr-3 w-75" src="../static/images/Plan_9_Alternative_poster.png" alt="Plan 9 Alternative">
+                    </a>
+                </div>
+
+                <div class="media-body">
+                    <h3>Plan 9 alternative</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        ut labore et dolore magna aliqua.</p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                        pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                        nisi ut aliquip ex ea commodo consequat. </p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Lorem ipsum dolor...</p>
+                    <button type="button" class="btn btn-secundary video-btn" data-toggle="modal"
+                            data-src="https://www.youtube.com/embed/u2ukRYsYPmo" data-target="#myModal">
+                        Watch Trailer
+                        </button>
+                        <a href="{{url_for('seats')}}" class="btn btn-secondary btn-md" role="button" aria-pressed="true">Select</a>
+                </div>
+            </div>
+
+            <div class="media border p-3">
+                <div class="media-left media-top">
+                    <a href="#">
+                        <img class="align-self-start mr-3 w-75" src="../static/images/thejoker.png" alt="The Joker">
+                    </a>
+                </div>
+
+                <div class="media-body">
+                    <h3>The Joker</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        ut labore et dolore magna aliqua.</p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                        pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                        nisi ut aliquip ex ea commodo consequat. </p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Lorem ipsum dolor...</p>
+                    <button type="button" class="btn btn-secundary video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/zAGVQLHvwOY" data-target="#myModal">
+                        Watch Trailer
+                        </button>
+                        <a href="{{url_for('seats')}}" class="btn btn-secondary btn-md" role="button" aria-pressed="true">Select</a>
+                </div>
+            </div>
+
+            <div class="media border p-3">
+                <div class="media-left media-top">
+                    <a href="#">
+                        <img class="align-self-start mr-3 w-75" src="../static/images/Enormity_of_Life_Movie.png" alt="Enormity of Life Movie">
+                    </a>
+                </div>
+
+                <div class="media-body">
+                    <h3>The Enormity of life</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        ut labore et dolore magna aliqua.</p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                        pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                        nisi ut aliquip ex ea commodo consequat. </p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Lorem ipsum dolor...</p>
+                    <button type="button" class="btn btn-secundary video-btn" data-toggle="modal"
+                    data-src="https://player.vimeo.com/video/350866854" data-target="#myModal">
+                        Watch Trailer
+                        </button>
+                        <a href="{{url_for('seats')}}" class="btn btn-secondary btn-md" role="button" aria-pressed="true">Select</a>
+                </div>
+            </div>
+
+            <div class="media border p-3">
+                <div class="media-left media-top">
+                    <a href="#">
+                        <img class="align-self-start mr-3 w-75" src="../static/images/Saigon-to-Dienbien-Fu.png" alt="Saigon to Dienbien Fu">
+                    </a>
+                </div>
+
+                <div class="media-body">
+                    <h3>Saigon to Dienbien Fu</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        ut labore et dolore magna aliqua.</p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                        pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                        nisi ut aliquip ex ea commodo consequat. </p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Lorem ipsum dolor...</p>
+                    <button type="button" class="btn btn-secundary video-btn" data-toggle="modal"
+                    data-src="https://www.youtube.com/embed/f9ItPL0jULo"  data-target="#myModal">
+                        Watch Trailer
+                        </button>
+                        <a href="{{url_for('seats')}}" class="btn btn-secondary btn-md" role="button" aria-pressed="true">Select</a>
+                </div>
+            </div>
+
+            <div class="media border p-3">
+                <div class="media-left media-top">
+                    <a href="#">
+                        <img class="align-self-start mr-3 w-75" src="../static/images/duck_duck_goose.png" alt="duck duck goose">
+                    </a>
+                </div>
+
+                <div class="media-body">
+                    <h3>Duck Duck Goose</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        ut labore et dolore magna aliqua.</p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                        pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                        nisi ut aliquip ex ea commodo consequat. </p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Lorem ipsum dolor...</p>
+                    <button type="button" class="btn btn-secundary video-btn" data-toggle="modal"
+                    data-src="https://www.youtube.com/embed/34ClfQttSLA"  data-target="#myModal">
+                        Watch Trailer
+                        </button>
+                        <a href="{{url_for('seats')}}" class="btn btn-secondary btn-md" role="button" aria-pressed="true">Select</a>
+                </div>
+            </div>
+
+
+            <div class="media border p-3">
+                <div class="media-left media-top">
+                    <a href="#">
+                        <img class="align-self-start mr-3 w-75" src="../static/images/forbidden_planet.jpg" alt="forbidden planet">
+                    </a>
+                </div>
+
+                <div class="media-body">
+                    <h3>Forbidden Planet</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        ut labore et dolore magna aliqua.</p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                        pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                        nisi ut aliquip ex ea commodo consequat. </p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Lorem ipsum dolor...</p>
+                    <button type="button" class="btn btn-secundary video-btn" data-toggle="modal"
+                    data-src="https://www.youtube.com/embed/AxQ9GG6hUDM" data-target="#myModal">
+                        Watch Trailer
+                        </button>
+                        <a href="{{url_for('seats')}}" class="btn btn-secondary btn-md" role="button" aria-pressed="true">Select</a>
+                </div>
+            </div>
+
+            <div class="media border p-3">
+                <div class="media-left media-top">
+                    <a href="#">
+                        <img class="align-self-start mr-3 w-75" src="../static/images/heroes_never_fade.png" alt="heroes_never_fade">
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+{% endblock %}

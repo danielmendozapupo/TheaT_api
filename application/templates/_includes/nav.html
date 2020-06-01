@@ -1,0 +1,46 @@
+<header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between fixed-top">
+
+                <a class="navbar-brand" href="{{url_for('index')}}">
+                 <img class="img-fluid img-thumbnail"  src="{{ url_for('static',filename='images/mylogo_1.png')}}" alt="my logo"/>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <ul class="navbar-nav nav-fill ml-auto w-100">
+                        <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('locations') }}" {% if location %}active{% endif %}>
+                            Locations</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('movies') }}" {% if movies %}active{% endif %}>
+                            Movies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('foodandDrinks') }}"
+                               {% if foodandDrinks %}active{% endif %}>Food & Drink</a>
+                        </li>
+                       {% if not session['username'] %}
+                        <li class="nav-item">
+                            <a class="nav-link "  href="{{url_for('login') }}"
+                               {% if (login or register) %}active{% endif %}>Login</a>
+                        </li>
+                        {% else %}
+                            <li class="nav-item">
+                                 <a class="nav-link "  href="{{url_for('logout') }}">Logout</a>
+                            </li>
+                        {% endif %}
+                                                    <!-- Search form
+                        <form class="form-inline md-form form-sm active-cyan-2 mt-2">
+                            <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
+                            aria-label="Search">
+                            <i class="fas fa-search" aria-hidden="false"></i>
+                        </form>-->
+                    </ul>
+
+                </div>
+        </nav>
+</header>
